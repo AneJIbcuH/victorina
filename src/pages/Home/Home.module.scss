@@ -1,0 +1,35 @@
+@import '/src/assets/scss/variables.scss';
+
+.home {
+  background-image: url('/title/bg.png');
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  padding: 80px;
+
+  &-logo {
+    width: 1472px;
+    height: 200px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &-title {
+    font-weight: 600;
+    font-size: 300px;
+    line-height: 98%;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-top: 100px;
+  }
+
+  &-btn {
+    margin-top: 80px;
+    width: 807px;
+    height: 192px;
+    font-weight: 600;
+    font-size: 60px;
+  }
+}

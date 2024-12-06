@@ -1,0 +1,101 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-zoom-enter-active,
+.fade-zoom-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-zoom-enter-from,
+.fade-zoom-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.fade-page-enter-active,
+.fade-page-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-page-enter-from,
+.fade-page-leave-to {
+  opacity: 0;
+}
+
+.fade-top-enter-active,
+.fade-top-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s linear;
+  transform: translateY(0);
+}
+
+.fade-top-enter-from,
+.fade-top-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/////////////////////////////////////////////
+
+.my-enter-active {
+  transition: all 0.4s ease-out;
+}
+
+.my-leave-active {
+  transition: all 0.2s ease-out;
+}
+
+.my-enter-from,
+.my-leave-to {
+  transform: translateX(40px);
+  opacity: 0;
+  height: 0;
+}
+
+.my-enter-from {
+  transform: translateX(-60px);
+}
+
+//////////////////////////////////////////
+
+.btns-enter-active {
+  transition: all 0.7s ease-out;
+}
+
+.btns-leave-active {
+  transition: all 0.1s ease-out;
+}
+
+.btns-enter-from {
+  transform: translateY(-120px);
+  opacity: 0;
+  height: 0;
+  margin: 0;
+}
+
+.btns-leave-to {
+  transform: translateY(120px);
+  height: 0;
+  opacity: 0;
+  margin: 0;
+}
+
+////////////////////////////////////////////
+
+.bg-enter-active,
+.bg-leave-active {
+  transition: all 1s ease-out;
+}
+
+.bg-enter-from,
+.bg-leave-to {
+  transform: translateX(4000px);
+  opacity: 0;
+  height: 0;
+}

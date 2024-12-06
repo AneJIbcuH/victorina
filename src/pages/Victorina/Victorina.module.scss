@@ -1,0 +1,59 @@
+@import '/src/assets/scss/variables.scss';
+
+.victorina {
+  padding: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+
+  &-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    img {
+      height: 2160px;
+      width: 3840px;
+    }
+  }
+
+  &-btn-end {
+    width: 471px;
+    font-weight: 600;
+  }
+
+  &-btn-skip {
+    width: 488px;
+    font-weight: 600;
+  }
+}
+
+.hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.usestore {
+  position: absolute;
+  right: 0;
+
+  button {
+    width: 200px;
+    height: 200px;
+    margin-right: 50px;
+    font-size: 125px;
+    background: rgb(255, 144, 125);
+    
+    &:hover {
+      color: rgb(255, 115, 0);
+    }
+
+    &:active {
+      background: coral;
+    }
+  }
+}
