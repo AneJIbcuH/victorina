@@ -68,7 +68,6 @@ function check(answer: Answer, idx: number) {
           v-for="(answer, idx) in answers"
           @click="() => check(answer, idx)"
           :key="answer.id"
-          :id="answer.id"
           :color="computedColor(answer)"
           >{{ answer.title }}</Button
         >
@@ -81,7 +80,6 @@ function check(answer: Answer, idx: number) {
         >
           <Button
             @click="() => check(answer, idx)"
-            :id="answer.id"
             :color="computedColor(answer)"
           >
             {{ answer.title }}
