@@ -1,4 +1,4 @@
-import { Question } from '@/models/models'
+import { Question } from '@/models/models.ts'
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
@@ -19,6 +19,6 @@ export const useStore = defineStore('victorina', () => {
     currentNumQuestion,
     questions,
     score,
-    getData
+    getData,
   }
 })

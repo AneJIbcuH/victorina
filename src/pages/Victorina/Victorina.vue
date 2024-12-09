@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStore } from '@/store/store'
+import { useStore } from '@/store/store.ts'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import Question from '@/components/Question/Question.vue'

@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 export enum AppRouts {
   HOME = '/',
   VICTORINA = '/victorina',
-END = '/end'
+  END = '/end',
 }
 
 const router = createRouter({
@@ -20,7 +20,7 @@ const router = createRouter({
     {
       path: AppRouts.END,
       component: () => import('../pages/End/End.vue'),
-    }
+    },
   ],
 })
 
