@@ -3,7 +3,8 @@ export type Answer = {
     title: string,
     correct: boolean,
     image?: string
-    imageSize?: number[]
+    imageSize?: number[],
+    check?: boolean,
 }
 
 export type Question = {

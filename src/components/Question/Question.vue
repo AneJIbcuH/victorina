@@ -1,23 +1,32 @@
 <script setup lang="ts">
 import { useStore } from '@/store/store'
 import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
+import { useRouter } from 'vue-router'
 import Button from '@/components/UI/Button/Button.vue'
 import { Answer } from '@/models/models'
-import { useRouter } from 'vue-router'
 
 const { currentNumQuestion, questions, score } = storeToRefs(useStore())
 const router = useRouter()
 const currentQuestion = computed(
   () => questions.value[currentNumQuestion.value - 1]
 )
+const answers = ref<Answer[]>(currentQuestion.value.answers)
 
-function check(
-  e: { target: { classList: { add: (arg0: string) => void } } },
-  answer: Answer
-) {
+watchEffect(() => (answers.value = currentQuestion.value.answers))
+
+function computedColor(answer: Answer) {
+  if (answer.check && answer.correct) {
+    return 'grass'
+  } else if (answer.check && !answer.correct) {
+    return 'red'
+  } else return 'teal'
+}
+
+function check(answer: Answer, idx: number) {
+  answers.value[idx].check = true
+
   if (answer.correct) {
-    e.target.classList.add('btn-grass')
     setTimeout(() => {
       score.value++
       currentNumQuestion.value == questions.value.length
@@ -25,24 +34,17 @@ function check(
         : currentNumQuestion.value++
     }, 1500)
   } else {
-    e.target.classList.add('btn-red')
-    const buttons = document.querySelectorAll('.thisbtn')
-    const element = currentQuestion.value.answers.find(
-      (el) => el.correct === true
-    )
-
     setTimeout(() => {
-      for (let i = 0; i < buttons.length; i++) {
-        const item = buttons[i]
-        if (+item.id == element?.id) {
-          item.classList.add('btn-grass')
-          setTimeout(() => {
-            currentNumQuestion.value == questions.value.length
-              ? router.push('/end')
-              : currentNumQuestion.value++
-          }, 1500)
+      answers.value.map((el) => {
+        if (el.correct) {
+          return (el.check = true)
         }
-      }
+      })
+      setTimeout(() => {
+        currentNumQuestion.value == questions.value.length
+          ? router.push('/end')
+          : currentNumQuestion.value++
+      }, 1500)
     }, 1500)
   }
 }
@@ -61,28 +63,26 @@ function check(
       <div class="question-text" key="description">
         {{ currentQuestion.description }}
       </div>
-      <div class="question-btns" v-if="!currentQuestion.answers[0].image">
+      <div class="question-btns" v-if="!answers[0].image">
         <Button
-          v-for="answer in currentQuestion.answers"
-          @click="(e) => check(e, answer)"
+          v-for="(answer, idx) in answers"
+          @click="() => check(answer, idx)"
           :key="answer.id"
           :id="answer.id"
-          color="teal"
-          class="thisbtn"
+          :color="computedColor(answer)"
           >{{ answer.title }}</Button
         >
       </div>
       <div class="question-imgs" v-else>
         <div
-          v-for="answer in currentQuestion.answers"
+          v-for="(answer, idx) in answers"
           :key="answer.id"
           class="question-imgs-picture"
         >
           <Button
-            @click="(e) => check(e, answer)"
+            @click="() => check(answer, idx)"
             :id="answer.id"
-            class="thisbtn"
-            color="teal"
+            :color="computedColor(answer)"
           >
             {{ answer.title }}
           </Button>
@@ -97,5 +97,5 @@ function check(
 </template>
 
 <style scoped>
-@import './question.module.scss';
+@import './Question.module.scss';
 </style>
