@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { useStore } from '@/store/store'
 import { storeToRefs } from 'pinia'
-import { computed, ref, watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import Button from '@/components/UI/Button/Button.vue'
 import { Answer } from '@/models/models'
 
+const url = window.API
 const { currentNumQuestion, questions, score } = storeToRefs(useStore())
 const router = useRouter()
-const currentQuestion = computed(
-  () => questions.value[currentNumQuestion.value - 1]
+const answers = ref<Answer[]>(
+  questions.value[currentNumQuestion.value - 1].answers
 )
-const answers = ref<Answer[]>(currentQuestion.value.answers)
-const url = window.API
 
-watchEffect(() => (answers.value = currentQuestion.value.answers))
+watchEffect(
+  () => (answers.value = questions.value[currentNumQuestion.value - 1].answers)
+)
 
 function computedColor(answer: Answer) {
   if (answer.check && answer.correct) {
@@ -62,7 +63,7 @@ function check(answer: Answer, idx: number) {
         Вопрос {{ currentNumQuestion }} / {{ questions.length }}
       </div>
       <div class="question-text" key="description">
-        {{ currentQuestion.description }}
+        {{ questions[currentNumQuestion - 1].description }}
       </div>
       <div class="question-btns" v-if="!answers[0].image">
         <Button
@@ -96,10 +97,7 @@ function check(answer: Answer, idx: number) {
             {{ answer.title }}
           </Button>
 
-          <img
-            :src="`${url + answer.image}`"
-            alt="Картинка"
-          />
+          <img :src="`${url + answer.image}`" alt="Картинка" />
         </div>
       </div>
     </TransitionGroup>

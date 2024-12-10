@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 interface Props {
   color?: 'white' | 'teal' | 'red' | 'grass'
 }
