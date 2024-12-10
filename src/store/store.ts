@@ -7,9 +7,10 @@ export const useStore = defineStore('victorina', () => {
   const currentNumQuestion = ref<number>(1)
   const questions = ref<Question[]>([])
   const score = ref<number>(0)
+  const url = window.API
 
   function getData() {
-    axios.get('https://viktorins-api.itlabs.top/api/questions').then((resp) => {
+    axios.get(`${url}/api/questions`).then((resp) => {
       questions.value = resp.data
       console.log(resp.data)
     })

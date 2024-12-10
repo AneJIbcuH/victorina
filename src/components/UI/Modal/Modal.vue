@@ -18,6 +18,12 @@ interface ModalEmits {
 const router = useRouter()
 const emits = defineEmits<ModalEmits>()
 // const props = defineProps<Props>()
+
+function toHome() {
+  router.push('/')
+  score.value = 0
+  currentNumQuestion.value = 1
+}
 </script>
 
 <template>
@@ -26,11 +32,7 @@ const emits = defineEmits<ModalEmits>()
       <div class="modal-enot">
         <img src="/enot.png" alt="" />
       </div>
-      <Button
-        @click="router.push('/'), (score = 0), (currentNumQuestion = 1)"
-        class="modal-btn"
-        >Завершить викторину</Button
-      >
+      <Button @click="toHome" class="modal-btn">Завершить викторину</Button>
       <Button color="teal" class="modal-btn" @click="emits('close')"
         >Продолжить</Button
       >

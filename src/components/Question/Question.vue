@@ -12,6 +12,7 @@ const currentQuestion = computed(
   () => questions.value[currentNumQuestion.value - 1]
 )
 const answers = ref<Answer[]>(currentQuestion.value.answers)
+const url = window.API
 
 watchEffect(() => (answers.value = currentQuestion.value.answers))
 
@@ -32,7 +33,7 @@ function check(answer: Answer, idx: number) {
       currentNumQuestion.value == questions.value.length
         ? router.push('/end')
         : currentNumQuestion.value++
-    }, 1500)
+    }, 500)
   } else {
     setTimeout(() => {
       answers.value.map((el) => {
@@ -44,8 +45,8 @@ function check(answer: Answer, idx: number) {
         currentNumQuestion.value == questions.value.length
           ? router.push('/end')
           : currentNumQuestion.value++
-      }, 1500)
-    }, 1500)
+      }, 500)
+    }, 500)
   }
 }
 </script>
@@ -58,7 +59,7 @@ function check(answer: Answer, idx: number) {
     <TransitionGroup name="btns">
       <div class="question-title" key="title">
         <img src="/question.png" alt="" />
-        Вопрос {{ currentNumQuestion }} / 20
+        Вопрос {{ currentNumQuestion }} / {{ questions.length }}
       </div>
       <div class="question-text" key="description">
         {{ currentQuestion.description }}
@@ -69,6 +70,11 @@ function check(answer: Answer, idx: number) {
           @click="() => check(answer, idx)"
           :key="answer.id"
           :color="computedColor(answer)"
+          :style="
+            answers.find((el) => el.check == true)?.check
+              ? { pointerEvents: 'none' }
+              : ''
+          "
           >{{ answer.title }}</Button
         >
       </div>
@@ -81,11 +87,17 @@ function check(answer: Answer, idx: number) {
           <Button
             @click="() => check(answer, idx)"
             :color="computedColor(answer)"
+            :style="
+              answers.find((el) => el.check == true)?.check
+                ? { pointerEvents: 'none' }
+                : ''
+            "
           >
             {{ answer.title }}
           </Button>
+
           <img
-            :src="`http://viktorins-api.itlabs.top/${answer.image}`"
+            :src="`${url + answer.image}`"
             alt="Картинка"
           />
         </div>
