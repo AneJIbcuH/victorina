@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
+import ScreenshotProvider from './components/Loupe/ScreenshotProvider.vue';
 
 const route = useRoute()
 </script>
 
 <template>
   <div class="container">
+    <ScreenshotProvider>
     <RouterView v-slot="{ Component }">
       <template v-if="Component">
         <transition name="my" mode="out-in">
@@ -15,5 +17,6 @@ const route = useRoute()
         </transition>
       </template>
     </RouterView>
+  </ScreenshotProvider>
   </div>
 </template>

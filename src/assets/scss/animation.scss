@@ -85,17 +85,3 @@
   opacity: 0;
   margin: 0;
 }
-
-////////////////////////////////////////////
-
-.bg-enter-active,
-.bg-leave-active {
-  transition: all 1s ease-out;
-}
-
-.bg-enter-from,
-.bg-leave-to {
-  transform: translateX(4000px);
-  opacity: 0;
-  height: 0;
-}
