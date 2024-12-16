@@ -24,7 +24,7 @@ const onClick = () => {
       :class="['ally', { active: isActive }, route.path !=  '/' ? 'small' : '' ]"
       :style="route.path !=  '/' ? {width: '200px'} : ''"
     >
-      <img :src="isActive ? '/eye2.png' : '/eye1.png'" alt="" />
+      <img :src="isActive ? '/eye2.webp' : '/eye1.webp'" alt="" />
       <span v-if="route.path === '/'">Для слабовидящих</span>
     </button>
   </transition>

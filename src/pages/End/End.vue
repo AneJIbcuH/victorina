@@ -42,7 +42,7 @@ onMounted(() => getData())
   <div class="end">
     <!-- <input type="text" v-model="score" /> -->
     <div class="end-bg">
-      <img :src="`/end/${picture.congratulation}.png`" alt="Загрузка..." />
+      <img :src="`/end/${picture.congratulation}.webp`" alt="Загрузка..." />
     </div>
     <Button color="teal" class="end-btn-again" @click="playAgain('/Victorina')"
       >Пройти заново</Button

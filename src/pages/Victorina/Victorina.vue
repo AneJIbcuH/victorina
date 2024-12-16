@@ -22,7 +22,7 @@ const show = ref(false)
       <Modal v-if="show" :is-open="show" @close="show = false"></Modal>
     </Transition>
     <div class="victorina-bg">
-      <img :src="`/questionsBG/${currentNumQuestion}.png`" alt="Задний фон" />
+      <img :src="`/questionsBG/${currentNumQuestion}.webp`" alt="Задний фон" />
     </div>
     <Button class="victorina-btn-end" @click="show = !show">Завершить</Button>
     <Question />
