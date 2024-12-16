@@ -21,6 +21,7 @@ onMounted(() => {
     <Button class="home-btn" color="teal" @click="router.push('/victorina')">
       Начать викторину
     </Button>
+    <div class="home-menu"></div>
   </div>
 </template>
 
