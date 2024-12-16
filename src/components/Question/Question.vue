@@ -59,7 +59,7 @@ function check(answer: Answer, idx: number) {
   >
     <TransitionGroup name="btns">
       <div class="question-title" key="title">
-        <img src="/question.png" alt="" />
+        <img src="/question.webp" alt="" />
         Вопрос {{ currentNumQuestion }} / {{ questions.length }}
       </div>
       <div class="question-text" key="description">

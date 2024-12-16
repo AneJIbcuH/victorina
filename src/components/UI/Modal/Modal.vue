@@ -30,7 +30,7 @@ function toHome() {
   <div class="modal">
     <div class="modal-content">
       <div class="modal-enot">
-        <img src="/enot.png" alt="" />
+        <img src="/enot.webp" alt="" />
       </div>
       <Button @click="toHome" class="modal-btn">Завершить викторину</Button>
       <Button color="teal" class="modal-btn" @click="emits('close')"

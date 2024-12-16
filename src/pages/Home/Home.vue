@@ -15,7 +15,7 @@ onMounted(() => {
 <template>
   <div class="home">
     <div class="home-logo">
-      <img src="/title/logos.png" alt="Загрузка..." />
+      <img src="/title/logos.webp" alt="Загрузка..." />
     </div>
     <div class="home-title">Заповедный калейдоскоп</div>
     <Button class="home-btn" color="teal" @click="router.push('/victorina')">
