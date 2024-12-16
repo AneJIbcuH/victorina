@@ -65,6 +65,7 @@ function check(answer: Answer, idx: number) {
       <div class="question-text" key="description">
         {{ questions[currentNumQuestion - 1].description }}
       </div>
+
       <div class="question-btns" v-if="!answers[0].image">
         <Button
           v-for="(answer, idx) in answers"
@@ -79,14 +80,15 @@ function check(answer: Answer, idx: number) {
           >{{ answer.title }}</Button
         >
       </div>
+
       <div class="question-imgs" v-else>
         <div
           v-for="(answer, idx) in answers"
           :key="answer.id"
           class="question-imgs-picture"
+          @click="() => check(answer, idx)"
         >
           <Button
-            @click="() => check(answer, idx)"
             :color="computedColor(answer)"
             :style="
               answers.find((el) => el.check == true)?.check
@@ -100,6 +102,7 @@ function check(answer: Answer, idx: number) {
           <img :src="`${url + answer.image}`" alt="Картинка" />
         </div>
       </div>
+
     </TransitionGroup>
   </div>
 </template>
