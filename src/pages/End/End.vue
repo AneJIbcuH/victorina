@@ -14,7 +14,7 @@ const picture = computed(() => {
     return {
       congratulation: 'normal',
       text: ` Неплохо! Охрана природы — общее дело! <br />
-      родолжай изучать природу нашего края!`,
+      продолжай изучать природу нашего края!`,
     }
   } else if (score.value < 16) {
     return {
