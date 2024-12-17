@@ -1,7 +1,7 @@
 @import '/src/assets/scss/variables.scss';
 
 .home {
-  background-image: url('/title/bg.webp');
+  background-image: url('/title/bg.png');
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -36,12 +36,12 @@
 
   &-menu {
     position: absolute;
-    right: 80px;
+    left: 80px;
     bottom: 80px;
-    // border: solid 10px red;
+    cursor: pointer;
+    background-image: url('/title/btn.png');
     width: 150px;
     height: 150px;
-    border-radius: 150px;
-    cursor: pointer;
+    background-size: cover;
   }
 }

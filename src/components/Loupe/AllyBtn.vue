@@ -41,6 +41,7 @@ button {
   justify-content: space-between;
   font-weight: 600;
   font-size: 60px;
+  font-family: 'Inter';
   line-height: 120%;
   letter-spacing: -0.02em;
   background: var(--white);
